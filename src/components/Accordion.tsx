@@ -3,7 +3,7 @@ import React from 'react'
 
 const Accordion = ( {items} ) => {
     const renderedItems = items.map(item => {
-        return <div>
+        return <React.Fragment key={item.title}>
             <div className="title active">
                 <i className="dropdown icon"></i>
                 {item.title}
@@ -11,13 +11,13 @@ const Accordion = ( {items} ) => {
             <div className="content active">
                 <p>{item.content}</p>
             </div>
-        </div>
+        </React.Fragment>
     })
 
 
     return (
-        <div>
-            <h1>{items.length}</h1>
+        <div className="ui styled accordion">
+            {renderedItems}
         </div>
     )
 }
