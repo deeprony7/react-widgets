@@ -1,5 +1,7 @@
 import React, { useState , useEffect} from 'react'
 import axios from 'axios'
+import createDOMPurify from "dompurify";
+const DOMPurify = createDOMPurify(window);
 
 const Search = (props) => {
     const [term, setTerm] = useState('reactjs')
@@ -31,7 +33,7 @@ const Search = (props) => {
                     <div className="header">
                         {result.title}
                     </div>
-                    <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+                    <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(result.snippet) }}></span>
                 </div>
             </div>
         )
