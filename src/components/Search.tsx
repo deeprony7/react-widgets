@@ -1,6 +1,8 @@
 import React, { useState , useEffect} from 'react'
 import axios from 'axios'
 import createDOMPurify from "dompurify";
+
+
 const DOMPurify = createDOMPurify(window);
 
 const Search = (props) => {
@@ -29,6 +31,12 @@ const Search = (props) => {
     const renderedResults = results.map((result) => {
         return (
             <div key={result.pageid} className="item">
+                <div className="right floated content">
+                    <a 
+                        href={`https://en.wikipedia.org?curid=${result.pageid}`}
+                        target="_blank" 
+                        className="ui button">Go</a>
+                </div>
                 <div className="content">
                     <div className="header">
                         {result.title}
