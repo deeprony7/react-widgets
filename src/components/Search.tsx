@@ -67,7 +67,8 @@ const Search = (props) => {
                         type="text"
                         value={term}
                         onChange={e => setTerm(e.target.value)}
-                        className="input"/>
+                        className="input"
+                        autoFocus/>
                 </div>
             </div>
             <div className="ui celled list">
