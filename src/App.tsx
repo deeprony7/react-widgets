@@ -30,7 +30,7 @@ const options = [
     value: 'blue'
   },
   {
-    label: 'A shade og Green',
+    label: 'A shade of Green',
     value: 'green'
   }
 ]
@@ -38,16 +38,20 @@ const options = [
 
 const App = () => {
   const [selected, setSelected] = useState(options[0])
+  const [showDropdown, setShowDropdown] = useState(true)
 
 
   return (
     <div>
       {/* <Accordion items={items}/> */}
       {/* <Search/> */}
-      <Dropdown 
+      <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
+      {showDropdown ?
+        <Dropdown 
         selected={selected}
         onSelectedChange={setSelected} 
-        options={options}/>
+        options={options}/> : null
+      }
     </div>
   )
 }
