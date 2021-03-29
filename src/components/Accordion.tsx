@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
+import {Item} from '../Item'
   
+interface AccordionProps {
+    items: Item[],
+}
 
-const Accordion = ( {items} ) => {
-    const [activeIndex, setActiveIndex] = useState(null)
+const Accordion = ( props: AccordionProps ) => {
+    const [activeIndex, setActiveIndex] = useState<number>(-1)
 
 
-    const onTitleClick = (index) => {
+    const onTitleClick = (index: number) => {
         setActiveIndex(index)
     }
 
-    const renderedItems = items.map((item, index) => {
+    const renderedItems = props.items.map((item, index) => {
         const active = index === activeIndex ? 'active' : ''
 
         return <React.Fragment key={item.title}>

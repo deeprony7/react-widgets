@@ -1,11 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react'
 
-const Dropdown = ({ options, selected, onSelectedChange, label }) => {
+interface DropdownProps {
+    options: any,
+    selected: {
+        label: string,
+        value: string
+    },
+    onSelectedChange: any,
+    label: string
+}
+
+
+const Dropdown: React.FC<DropdownProps> = ({ options, selected, onSelectedChange, label }) => {
     const [open, setOpen] = useState(false)
-    const ref = useRef()
+    const ref = useRef<any>()
 
     useEffect(() => {
-        const onBodyClick = (event) => {
+        const onBodyClick = (event: any) => {
             if (ref.current && ref.current.contains(event.target)){
                 return
             }

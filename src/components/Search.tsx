@@ -5,9 +5,20 @@ import createDOMPurify from "dompurify";
 
 const DOMPurify = createDOMPurify(window);
 
-const Search = (props) => {
-    const [term, setTerm] = useState('reactjs')
-    const [results, setResults] = useState([])
+interface SearchResult {
+    ns: number,
+    title: string,
+    pageid: number,
+    size: number,
+    wordcount: number,
+    snippet: string,
+    timestamp: string
+}
+
+
+const Search = () => {
+    const [term, setTerm] = useState<string>('reactjs')
+    const [results, setResults] = useState<SearchResult[]>([])
 
     useEffect(() => {
             
