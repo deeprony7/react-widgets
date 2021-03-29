@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import createDOMPurify from "dompurify";
+
+
+const DOMPurify = createDOMPurify(window);
 
 const Convert = ({ language, text }) => {
     const [translated, setTranslated] = useState('');
@@ -33,7 +37,7 @@ const Convert = ({ language, text }) => {
 
     return (
         <div>
-            <h1 className="ui header">{translated}</h1>
+            <h1 className="ui header" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(translated) }}></h1>
         </div>
     )
 }
