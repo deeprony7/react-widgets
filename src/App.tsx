@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
-// import Dropdown from './components/Dropdown'
-// import Accordion from './components/Accordion'
-// import Search from './components/Search'
+import Dropdown from './components/Dropdown'
+import Accordion from './components/Accordion'
+import Search from './components/Search'
 import Translate from './components/Translate'
-import { Item, items} from './Item'
+import { items} from './Item'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Header from './components/Header'
 
 
 
@@ -25,21 +27,24 @@ const options = [
 
 
 const App = () => {
-
+  const [selected, setSelected] = useState(options[0])
 
   return (
-    <div>
-      {/* <Accordion items={items}/> */}
-      {/* <Search/> */}
-      {/* {showDropdown ?
+    <Router>
+      <div>
+        <Header/>
+        <Route exact path="/"><Accordion items={items}/></Route>
+        <Route path="/list"><Search/></Route>
+        <Route path="/dropdown">
         <Dropdown
-        label="Select a Color" 
-        selected={selected}
-        onSelectedChange={setSelected} 
-        options={options}/> : null
-      } */}
-      <Translate />
-    </div>
+          label="Select a Color" 
+          selected={selected}
+          onSelectedChange={setSelected} 
+          options={options}/>
+        </Route>
+        <Route path="/translate"><Translate /></Route>
+      </div>
+    </Router>
   )
 }
 
