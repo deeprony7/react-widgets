@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import {Item} from '../Item'
-  
+import { Item } from '../Item'
+
 interface AccordionProps {
     items: Item[],
 }
 
-const Accordion = ( props: AccordionProps ) => {
+const Accordion = (props: AccordionProps) => {
     const [activeIndex, setActiveIndex] = useState<number>(-1)
 
 
@@ -17,9 +17,9 @@ const Accordion = ( props: AccordionProps ) => {
         const active = index === activeIndex ? 'active' : ''
 
         return <React.Fragment key={item.title}>
-            <div 
+            <div
                 className={`title ${active}`}
-                onClick={() =>onTitleClick(index)}>
+                onClick={() => onTitleClick(index)}>
                 <i className="dropdown icon"></i>
                 {item.title}
             </div>

@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import createDOMPurify from "dompurify";
 
@@ -21,7 +21,7 @@ const Search = () => {
     const [results, setResults] = useState<SearchResult[]>([])
 
     useEffect(() => {
-            
+
         const search = async () => {
             const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
                 params: {
@@ -45,7 +45,7 @@ const Search = () => {
                 }
             }, 500)
 
-        return () => clearTimeout(timeoutId)
+            return () => clearTimeout(timeoutId)
         }
     }, [term])
 
@@ -54,9 +54,9 @@ const Search = () => {
         return (
             <div key={result.pageid} className="item">
                 <div className="right floated content">
-                    <a 
+                    <a
                         href={`https://en.wikipedia.org?curid=${result.pageid}`}
-                        target="_blank" 
+                        target="_blank"
                         rel="noreferrer"
                         className="ui button">Go</a>
                 </div>
@@ -80,7 +80,7 @@ const Search = () => {
                         value={term}
                         onChange={e => setTerm(e.target.value)}
                         className="input"
-                        autoFocus/>
+                        autoFocus />
                 </div>
             </div>
             <div className="ui celled list">
